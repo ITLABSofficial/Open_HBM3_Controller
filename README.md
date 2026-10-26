@@ -9,6 +9,9 @@
 [![Verification](https://img.shields.io/badge/Verification-19%2F19%20PASS-brightgreen.svg)](#local-simulation--quick-start-guide)
 [![Physical Signoff](https://img.shields.io/badge/ASAP7%207nm-0%20DRC%20%7C%207.45m%20Wire-success.svg)](#key-measured-metrics)
 
+
+> 🧭 **Silicon Stack Navigation:** [Architecture Home](https://github.com/ITLABSofficial) &nbsp;•&nbsp; [⬅️ Prev: Open_HBM3_PHY](https://github.com/ITLABSofficial/Open_HBM3_PHY) &nbsp;•&nbsp; **Layer 02: `Open_HBM3_Controller`** &nbsp;•&nbsp; [Next: OpenHBM3_PIM_Subsystem ➡️](https://github.com/ITLABSofficial/OpenHBM3_PIM_Subsystem)
+
 > ### 🌐 WORLD'S FIRST OPEN-SOURCE HBM3 HARDWARE ARCHITECTURE
 > OpenHBM3 is the **world's first publicly available, fully synthesizable, and silicon-hardened JEDEC JESD238 HBM3 memory controller and 1024-pin digital PHY reference design**. While High Bandwidth Memory (HBM3/HBM3E) has historically remained restricted behind proprietary commercial IP licenses and strict non-disclosure agreements (NDAs), OpenHBM3 delivers a complete, verified, and post-route signoff-ready hardware stack to the global open-source semiconductor community:
 > 1. **First Open JEDEC JESD238 Controller IP:** Synthesizable hardware implementing on-die Hamming(39,32) SECDED ECC, byte-level dynamic Data Bus Inversion (DBI), dual-sub-lane DDR datapath, and bank-prefetch scheduling.
@@ -314,6 +317,36 @@ OpenHBM3 incorporates several custom digital microarchitectural solutions design
 
 ---
 
+## 🗺️ Silicon Architecture Stack & Next-Page Navigation
+
+This repository represents **Layer 02** of our 8-layer unified silicon supercomputing stack. You can navigate sequentially through the entire hardware hierarchy:
+
+```
+[01: PHY Layer] ➔ [02: Memory Controller] ➔ [03: Near-Memory PIM] ➔ [04: Ara Core True-FMA]
+       ➔ [05: Cluster NoC] ➔ [06: 16-Core SoC] ➔ [07: 64-Core PCIe Card] ➔ [08: 16K WSE Wafer]
+```
+
+| Layer | Hardware Component | GitHub Repository | Key Architectural Specifications | Status |
+|:---:|:---|:---|:---|:---:|
+| **01** | **Physical Layer (PHY)** | [**`Open_HBM3_PHY`**](https://github.com/ITLABSofficial/Open_HBM3_PHY) | 1.18 TB/s HBM3E PHY, 8:1 SerDes, DFE/CTLE, 4.6 GHz WCK, DFI 5.0 | Active |
+| **02** | **Memory Controller** | [**`Open_HBM3_Controller` (Current)**](https://github.com/ITLABSofficial/Open_HBM3_Controller) | 16-Pseudo-Channel DFI 5.0 Controller, SECDED ECC, Bank Interleaving | Active |
+| **03** | **Near-Memory PIM** | [**`OpenHBM3_PIM_Subsystem`**](https://github.com/ITLABSofficial/OpenHBM3_PIM_Subsystem) | 3.2 TB/s Base-Die PIM Engine, FlashAttention, RMSNorm, True-FMA | Active |
+| **04** | **Compute Core** | [**`Ara_Core_TrueFMA_Systolic`**](https://github.com/ITLABSofficial/Ara_Core_TrueFMA_Systolic) | 16x16 Systolic Array & 6-Stage 2.0 GHz True-FMA (1.024 TFLOPS FP16) | Active |
+| **05** | **Cluster Interconnect** | [**`Ara_Cluster_TCDM_NoC`**](https://github.com/ITLABSofficial/Ara_Cluster_TCDM_NoC) | 4-Core Vector Cluster, 32-Bank TCDM SRAM (256 GB/s), 5-Port VC Router | Active |
+| **06** | **Multicore SoC** | [**`Ara_16Core_2x2_SoC`**](https://github.com/ITLABSofficial/Ara_16Core_2x2_SoC) | 16-Core GALS NoC Multicore SoC, 4-Zone PDN Stagger, Linux C Driver | Active |
+| **07** | **Board / Accelerator** | [**`Ara_PCIe_AI_Accelerator_64Core`**](https://github.com/ITLABSofficial/Ara_PCIe_AI_Accelerator_64Core) | 64-Core PCIe Gen5 x16 AI Card, 128 GB HBM3e Address Space (229W TDP) | Active |
+| **08** | **Wafer-Scale Engine** | [**`WSE_16K_Wafer_Scale_Engine`**](https://github.com/ITLABSofficial/WSE_16K_Wafer_Scale_Engine) | 300mm Monolithic 16,384-Core Wafer Engine, 48x HBM3 (1.15 TB), 15 kW | Active |
+
+<div align="center">
+
+| ⬅️ **Previous Component** | 🏠 **Architecture Ecosystem** | ➡️ **Next Component** |
+|:---:|:---:|:---:|
+| [**⬅️ Open_HBM3_PHY**](https://github.com/ITLABSofficial/Open_HBM3_PHY) | [**ITLABSofficial Profile**](https://github.com/ITLABSofficial) | [**OpenHBM3_PIM_Subsystem ➔**](https://github.com/ITLABSofficial/OpenHBM3_PIM_Subsystem) |
+
+</div>
+
+---
+
 ## License
 
-OpenHBM3 is released under the **Apache License, Version 2.0**. See [`LICENSE`](LICENSE) for complete details.
+This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
