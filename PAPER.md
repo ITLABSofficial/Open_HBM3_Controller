@@ -95,7 +95,18 @@ As quantified in Figure 2(b), dynamic DBI caps the maximum bit transitions per b
 
 ## 3. Physical Implementation & Static Timing Signoff
 
-### 3.1 Sub-10nm Physical Design Flow on Open EDA
+### 3.1 Bandwidth Utilization & Routed Silicon Bottlenecks
+
+A critical distinction must be established between behavioral simulation ceilings and routed physical silicon bottlenecks:
+- **Behavioral Simulation Ceiling:** In ideal behavioral RTL simulation running at a theoretical 2.5 GHz clock with zero wire parasitics, OpenHBM3 demonstrates an unthrottled read throughput of **$941.61\,\text{GB/s}$**.
+- **Post-Route Silicon Signoff:** When parasitic resistances ($R_{wire}$) and capacitances ($C_{wire}$) from the 7.45 meters of routed 7nm copper interconnect are extracted, OpenSTA static timing analysis confirms that the physical DQ pins toggle cleanly up to **$2,596.5\,\text{MHz DDR}$** ($f_{max} = 2,596.51\,\text{MHz}$, minimum cycle period $T_{min} = 385.13\,\text{ps}$). Across 1024 data pins, this defines an actual hardware physical bottleneck of:
+$$BW_{silicon} = \frac{1024\,\text{pins} \times 2596.5 \times 10^6 \times 2\,\text{transfers/s}}{8 \times 10^9\,\text{bytes/GB}} = 664.7\,\text{GB/s}$$
+
+![Figure 3: Bandwidth Utilization](figures/fig3_bandwidth_utilization.png)
+
+Figure 3 illustrates the sustained throughput scaling as a function of burst length ($BL$). At $BL=32$, the routed 7nm controller achieves $664.7\,\text{GB/s}$ ($99.8\%$ bus saturation).
+
+### 3.2 Sub-10nm Physical Design Flow & DRC-Clean Signoff
 
 Physical design was completed using the **OpenROAD** autonomous RTL-to-GDS flow with **TritonRoute** detailed routing [3] targeting the predictive **ASAP7 7nm FinFET** process design kit [4].
 
@@ -121,17 +132,6 @@ The physical metrics of the signoff netlist (audited from `synth/metrics.json` a
 | **Target Operating Frequency**| **2,596.5 MHz DDR (DQ Pins)** | OpenSTA Signoff (SS, 0.72V, 105°C) |
 
 ![Figure 4: Physical Placement and Routing](figures/fig4_physical_layout_floorplan.png)
-
-### 3.2 Simulation Ceiling vs. Routed Silicon Bottleneck
-
-A critical distinction must be established between behavioral simulation ceilings and routed physical silicon bottlenecks:
-- **Behavioral Simulation Ceiling:** In ideal behavioral RTL simulation running at a theoretical 2.5 GHz clock with zero wire parasitics, OpenHBM3 demonstrates an unthrottled read throughput of **$941.61\,\text{GB/s}$**.
-- **Post-Route Silicon Signoff:** When parasitic resistances ($R_{wire}$) and capacitances ($C_{wire}$) from the 7.45 meters of routed 7nm copper interconnect are extracted, OpenSTA static timing analysis confirms that the physical DQ pins toggle cleanly up to **$2,596.5\,\text{MHz DDR}$**. Across 1024 data pins, this defines an actual hardware physical bottleneck of:
-$$BW_{silicon} = \frac{1024\,\text{pins} \times 2596.5 \times 10^6 \times 2\,\text{transfers/s}}{8 \times 10^9\,\text{bytes/GB}} = 664.7\,\text{GB/s}$$
-
-![Figure 3: Bandwidth Utilization](figures/fig3_bandwidth_utilization.png)
-
-Figure 3 illustrates the sustained throughput scaling as a function of burst length ($BL$). At $BL=32$, the routed 7nm controller achieves $664.7\,\text{GB/s}$ ($99.8\%$ bus saturation).
 
 ---
 
