@@ -6,6 +6,7 @@
 *A transparent, silicon-hardened SystemVerilog reference architecture for High Bandwidth Memory.*
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Academic Paper](https://img.shields.io/badge/Research_Paper-Read_PAPER.md-blueviolet.svg)](PAPER.md)
 [![Verification](https://img.shields.io/badge/Verification-19%2F19%20PASS-brightgreen.svg)](#local-simulation--quick-start-guide)
 [![Physical Signoff](https://img.shields.io/badge/ASAP7%207nm-0%20DRC%20%7C%207.45m%20Wire-success.svg)](#key-measured-metrics)
 
