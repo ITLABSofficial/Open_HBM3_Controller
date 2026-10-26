@@ -60,14 +60,14 @@ Each pseudo-channel manages up to 16 internal DRAM banks. Accessing DRAM rows in
 - Row Precharge time: $t_{RP} = 14\,\text{ns}$
 - Row Cycle time: $t_{RC} = t_{RAS} + t_{RP} = 46\,\text{ns}$
 
-When successive requests target different rows within the same bank (a *row conflict*), the controller must issue a `PRECHARGE` followed by an `ACTIVATE`, incurring a severe $28\,\text{ns}$ overhead. To eliminate row conflicts, OpenHBM3 implements an **Out-of-Order Bank-Prefetch Scheduler** (`hbm3_ctrl/hbm3_command_scheduler.sv`) that dynamically prioritizes page hits and reorders requests across disjoint banks using a scoreboard matrix:
+When successive requests target different rows within the same bank (a *row conflict*), the controller must issue a `PRECHARGE` followed by an `ACTIVATE`, incurring a severe $28\,\text{ns}$ overhead. To eliminate row conflicts, OpenHBM3 implements an **Out-of-Order Bank-Prefetch Scheduler** (`rtl/hbm3_ctrl/pc_channel.sv` and `rtl/hbm3_800g/hbm3_800g_scheduler_32to16.sv`) that dynamically prioritizes page hits and reorders requests across disjoint banks using a scoreboard matrix:
 $$S_{priority} = w_{hit} \cdot Hit(cmd) + w_{bank} \cdot Disjoint(bank) - w_{age} \cdot WaitTime$$
 
 As shown in Figure 1, bank interleaving reduces total read latency from $46.5\,\text{ns}$ (random walk with conflicts) down to $17.2\,\text{ns}$ (bank-interleaved streaming), achieving a **$2.7\times$ latency reduction**.
 
 ### 2.2 Pipelined Hamming(39,32) SECDED ECC Engine
 
-At sub-10nm line rates, soft error rates (SER) caused by alpha particles and cosmic neutron strikes demand continuous on-die protection. OpenHBM3 integrates a hardware Single-Error-Correction Double-Error-Detection (SECDED) ECC engine (`hbm3_ctrl/hbm3_ecc_secded.sv`).
+At sub-10nm line rates, soft error rates (SER) caused by alpha particles and cosmic neutron strikes demand continuous on-die protection. OpenHBM3 integrates a hardware Single-Error-Correction Double-Error-Detection (SECDED) ECC engine (`rtl/hbm3_ctrl/ecc.sv`).
 
 For every 32-bit data word $D[31:0]$, the generator matrix $G$ calculates 7 parity bits $P[6:0]$:
 $$P_i = \bigoplus_{j=0}^{31} (G_{i,j} \cdot D_j)$$
@@ -83,7 +83,7 @@ In ASAP7 7nm FinFET, the SECDED encoder synthesizes into a 3-level XOR tree with
 
 ### 2.3 Byte-Level Dynamic Data Bus Inversion (DBI)
 
-High-speed I/O drivers dissipate significant dynamic power when driving capacitive interposer traces during logical $1 \rightarrow 0$ transitions. OpenHBM3 incorporates an active DBI encoder (`hbm3_ctrl/hbm3_dbi_encoder.sv`) for every 8-bit byte lane.
+High-speed I/O drivers dissipate significant dynamic power when driving capacitive interposer traces during logical $1 \rightarrow 0$ transitions. OpenHBM3 incorporates an active DBI encoder (`rtl/hbm3_ctrl/dbi.sv`) for every 8-bit byte lane.
 
 If the Hamming weight of active-low bits exceeds 4 ($H_w(Byte) > 4$), the byte is inverted and the corresponding $DBI\_n$ pin is driven low:
 $$D_{out}[7:0] = \begin{cases} \sim D_{in}[7:0], & \text{if } \sum_{k=0}^7 (D_{in}[k] == 0) > 4 \\ D_{in}[7:0], & \text{otherwise} \end{cases}$$
@@ -109,7 +109,7 @@ Physical design was completed using the **OpenROAD** autonomous RTL-to-GDS flow 
 +─────────────────────────────────────────────────────────────────────────────+
 ```
 
-The physical metrics of the signoff netlist (`synth/openhbm3_top.vg`) are summarized in Table 1.
+The physical metrics of the signoff netlist (audited from `synth/metrics.json` and `synth/sta_full.txt`) are summarized in Table 1.
 
 | Physical Parameter | Value | Signoff Condition |
 | :--- | :--- | :--- |
