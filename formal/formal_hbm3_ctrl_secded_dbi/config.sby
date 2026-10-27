@@ -1,0 +1,13 @@
+[options]
+mode bmc
+depth 1
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal formal_hbm3_ctrl_secded_dbi.sv
+prep -top formal_hbm3_ctrl_secded_dbi
+
+[files]
+formal/formal_hbm3_ctrl_secded_dbi.sv

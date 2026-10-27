@@ -1,0 +1,47 @@
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] Removing directory '/run/media/it/WD_HDD/Sierra hmb bellekler/show/Ara_16384Core_WSE_OpenHBM_800G/formal/formal_hbm3_ctrl_scheduler'.
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] Copy '/run/media/it/WD_HDD/Sierra hmb bellekler/show/Ara_16384Core_WSE_OpenHBM_800G/formal/formal_hbm3_ctrl_scheduler.sv' to '/run/media/it/WD_HDD/Sierra hmb bellekler/show/Ara_16384Core_WSE_OpenHBM_800G/formal/formal_hbm3_ctrl_scheduler/src/formal_hbm3_ctrl_scheduler.sv'.
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: smtbmc z3
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] base: starting process "cd formal/formal_hbm3_ctrl_scheduler/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] base: finished (returncode=0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] prep: starting process "cd formal/formal_hbm3_ctrl_scheduler/model; yosys -ql design_prep.log design_prep.ys"
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] prep: finished (returncode=0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] smt2: starting process "cd formal/formal_hbm3_ctrl_scheduler/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] smt2: finished (returncode=0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: starting process "cd formal/formal_hbm3_ctrl_scheduler; yosys-smtbmc -s z3 --presat --noprogress -t 14  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Solver: z3
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 1..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 1..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 2..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 2..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 3..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 3..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 4..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 4..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 5..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 5..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 6..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 6..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 7..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 7..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 8..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 8..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 9..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 9..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 10..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 10..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 11..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 11..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 12..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 12..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assumptions in step 13..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Checking assertions in step 13..
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: ##   0:00:00  Status: passed
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: finished (returncode=0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] engine_0: Status returned by engine: pass
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] summary: engine_0 (smtbmc z3) returned pass
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] summary: engine_0 did not produce any traces
+SBY  1:54:58 [formal/formal_hbm3_ctrl_scheduler] DONE (PASS, rc=0)

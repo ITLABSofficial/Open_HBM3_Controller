@@ -1,0 +1,13 @@
+[options]
+mode bmc
+depth 14
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal formal_hbm3_ctrl_scheduler.sv
+prep -top formal_hbm3_ctrl_scheduler
+
+[files]
+formal/formal_hbm3_ctrl_scheduler.sv

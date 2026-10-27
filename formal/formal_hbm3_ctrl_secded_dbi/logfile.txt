@@ -1,0 +1,21 @@
+SBY  1:54:58 [formal/formal_hbm3_ctrl_secded_dbi] Removing directory '/run/media/it/WD_HDD/Sierra hmb bellekler/show/Ara_16384Core_WSE_OpenHBM_800G/formal/formal_hbm3_ctrl_secded_dbi'.
+SBY  1:54:58 [formal/formal_hbm3_ctrl_secded_dbi] Copy '/run/media/it/WD_HDD/Sierra hmb bellekler/show/Ara_16384Core_WSE_OpenHBM_800G/formal/formal_hbm3_ctrl_secded_dbi.sv' to '/run/media/it/WD_HDD/Sierra hmb bellekler/show/Ara_16384Core_WSE_OpenHBM_800G/formal/formal_hbm3_ctrl_secded_dbi/src/formal_hbm3_ctrl_secded_dbi.sv'.
+SBY  1:54:58 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: smtbmc z3
+SBY  1:54:58 [formal/formal_hbm3_ctrl_secded_dbi] base: starting process "cd formal/formal_hbm3_ctrl_secded_dbi/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  1:54:58 [formal/formal_hbm3_ctrl_secded_dbi] base: finished (returncode=0)
+SBY  1:54:58 [formal/formal_hbm3_ctrl_secded_dbi] prep: starting process "cd formal/formal_hbm3_ctrl_secded_dbi/model; yosys -ql design_prep.log design_prep.ys"
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] prep: finished (returncode=0)
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] smt2: starting process "cd formal/formal_hbm3_ctrl_secded_dbi/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] smt2: finished (returncode=0)
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: starting process "cd formal/formal_hbm3_ctrl_secded_dbi; yosys-smtbmc -s z3 --presat --noprogress -t 1  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: ##   0:00:00  Solver: z3
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY  1:54:59 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: ##   0:00:50  Status: passed
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: finished (returncode=0)
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] engine_0: Status returned by engine: pass
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:50 (50)
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:50 (50)
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] summary: engine_0 (smtbmc z3) returned pass
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] summary: engine_0 did not produce any traces
+SBY  1:55:49 [formal/formal_hbm3_ctrl_secded_dbi] DONE (PASS, rc=0)
